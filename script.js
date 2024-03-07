@@ -8,9 +8,17 @@ function getWeather() {
     .then(data => {
         const cityName = data.name;
         const temperature = data.main.temp;
-        const wheatherDescription = data.wheather[0].description;
+        const weatherDescription = data.weather[0].description;
 
-        const wheatherDiv = document.getElementById('wheater');
+        const weatherDiv = document.getElementById('weather');
+        weatherDiv.innerHTML = `<p>Cidade: ${cityName}</p>
+                                <p>Temperatura: ${temperature}°C</p>  
+                                <p>Descrição: ${weatherDescription}</p>`;
     })
+    .catch(error => {
+        console.error('Erro ao obter dados do clima: ', error);
+    });
 
 }
+
+getWeather();
