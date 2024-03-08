@@ -9,7 +9,7 @@ function getWeather() {
         const cityName = data.name;
         const temperature = data.main.temp;
         const weatherDescription = data.weather[0].description;
-        const windSpeed = data.wind.speed; // Correção aqui
+        const windSpeed = data.wind.speed; 
 
         const weatherDiv = document.getElementById('weather');
         weatherDiv.innerHTML = `<p>Cidade: ${cityName}</p>
