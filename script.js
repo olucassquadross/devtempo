@@ -4,20 +4,26 @@ function getWeather() {
     const apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${apiCity}&appid=${apiKey}&units=metric`;
 
     fetch(apiURL)
-    .then(response => response.json())
-    .then(data => {
-        const cityName = data.name;
-        const temperature = data.main.temp;
-        const weatherDescription = data.weather[0].description;
+        .then(response => response.json())
+        .then(data => {
+            const cityName = data.name;
+            const weatherDescription = data.weather[0].description;
+            const weatherWind = data.wind.speed;
+            const maxTemp = data.main.temp_max;  
+            const minTemp = data.main.temp_min;  
+            const humidity = data.main.humidity; 
 
-        const weatherDiv = document.getElementById('weather');
-        weatherDiv.innerHTML = `<p>Cidade: ${cityName}</p>
-
-    })
-    .catch(error => {
-        console.error('Erro ao obter dados do clima: ', error);
-    });
-
-}
+            const weatherDiv = document.getElementById('weather');
+            weatherDiv.innerHTML = `<p>Cidade: ${cityName}</p>
+                                    <p>Temperatura max: ${maxTemp}°C</p> 
+                                    <p>Temperatura min: ${minTemp}°C</p>  
+                                    <p>Descrição: ${weatherDescription}</p>
+                                    <p>Vento: ${weatherWind}</p>
+                                    <p>Umidade: ${humidity}%</p>`; 
+            })
+            .catch(error => {
+                    console.error('Erro ao obter dados do clima: ', error);
+            });
+    }
 
 document.getElementById('cidade').addEventListener('input', getWeather);
