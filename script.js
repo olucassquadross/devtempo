@@ -14,8 +14,8 @@ function getWeather() {
         const weatherDiv = document.getElementById('weather');
         weatherDiv.innerHTML = `<p>Cidade: ${cityName}</p>
                                 <p>Temperatura: ${temperature}°C</p>  
-                                <p>Descrição: ${weatherDescription}</p>`;
-                                <p>Velocidade do vento: ${windspeed}</p>
+                                <p>Descrição: ${weatherDescription}</p>
+                                <p>Velocidade do vento: ${windspeed}</p>`;
     })
     .catch(error => {
         console.error('Erro ao obter dados do clima: ', error);
